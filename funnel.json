@@ -1,0 +1,410 @@
+{
+  "id": "lawyerleadconnect-growth-flywheel",
+  "name": "LawyerLeadConnect — 90 New Cases In 12 Weeks Growth Flywheel",
+  "slug": "lawyerleadconnect",
+  "branding": {
+    "hidden": true
+  },
+  "meta": {
+    "brandName": "LawyerLeadConnect",
+    "domain": "lawyerleadconnect.com",
+    "aiAgentName": "Claire",
+    "aiAssistantId": "assistant-037334b4-a95e-4d71-bc37-644803e97cdb",
+    "aiPhoneDisplay": "(512) 690-0783",
+    "aiPhoneE164": "+15126900783"
+  },
+  "theme": {
+    "primary": "#10b981",
+    "mode": "dark",
+    "radius": "14px",
+    "font": "Montserrat"
+  },
+  "settings": {
+    "showProgress": true,
+    "allowBack": true,
+    "persist": true,
+    "enableSwipe": true,
+    "transition": "slide"
+  },
+  "integrations": {
+    "leadEndpoint": ""
+  },
+  "steps": [
+    {
+      "id": "cover",
+      "type": "slidecover",
+      "width": "wide",
+      "progress": false,
+      "eyebrow": "For Family & Personal Injury Law Firms:",
+      "headlineBefore": "I’ll Guarantee To Bring You ",
+      "headlineUnderline": "90 New Cases At A Minimum $7,500 Average Case Value In The Next 12 Weeks",
+      "headlineAfter": ", Through Our Done-For-You Custom Law Firm Growth Flywheel...",
+      "punchline": "OR You DON’T Pay...",
+      "subtext": "Briefly Click Through These Slides So You Can See How Our Offer Works",
+      "cueLine1": "Press The Right",
+      "cueLine2": "Arrow To Continue",
+      "ctaLabel": "See How It Works"
+    },
+    {
+      "id": "mechanism",
+      "type": "content",
+      "width": "wide",
+      "eyebrow": "SLIDE 02 · THE DONE-FOR-YOU SYSTEM",
+      "headline": "How Our Custom Law Firm Growth Flywheel Delivers 90 Signed Cases In 12 Weeks",
+      "subtext": "No shared aggregator leads. No bloated retainers. One engineered pipeline built strictly for Family & Personal Injury firms.",
+      "blocks": [
+        {
+          "type": "features",
+          "columns": 3,
+          "items": [
+            {
+              "icon": "🎯",
+              "title": "01 · Exclusive High-Value Case Demand",
+              "text": "Precision paid acquisition across Meta, Google & YouTube targeting MVA, commercial trucking, catastrophic injury, and high-asset family law clients — 100% exclusive to your firm."
+            },
+            {
+              "icon": "⚡",
+              "title": "02 · 24/7 AI Speed-To-Lead Intake (<30s)",
+              "text": "Every claimant is called and texted in under 30 seconds by our trained Legal AI Intake Specialist — qualifying liability, insurance coverage & case value before booking onto your calendar."
+            },
+            {
+              "icon": "🛡️",
+              "title": "03 · Performance-Backed Risk Reversal",
+              "text": "90 new cases at a minimum $7,500 average case value in 12 weeks with an exclusive metro territory lock — OR You DON’T Pay our management fee."
+            }
+          ]
+        }
+      ],
+      "ctaLabel": "See The 12-Week Case Math →"
+    },
+    {
+      "id": "math",
+      "type": "content",
+      "width": "wide",
+      "eyebrow": "SLIDE 03 · THE GUARANTEE EQUATION",
+      "headline": "90 New Cases × $7,500+ Minimum Avg Case Value = $675,000+ Projected Pipeline",
+      "subtext": "Because we lock each metro to strictly ONE Personal Injury firm and ONE Family Law firm, we run a 60-second qualification check before unlocking demo times.",
+      "blocks": [
+        {
+          "type": "stats",
+          "columns": 4,
+          "items": [
+            { "value": "90+", "label": "Guaranteed 12-Week Cases" },
+            { "value": "$7,500+", "label": "Minimum Avg. Case Value" },
+            { "value": "<30 sec", "label": "24/7 AI Voice & SMS Speed" },
+            { "value": "1 Firm", "label": "Strict Territory Exclusivity" }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            { "icon": "✓", "text": "Zero shared leads — every injured claimant or family law prospect belongs 100% to your firm." },
+            { "icon": "✓", "text": "Includes done-for-you ad creatives, qualification quiz funnel, AI Voice + SMS intake, and calendar booking." },
+            { "icon": "✓", "text": "Answer 6 quick questions to verify your metro availability & unlock your 1-on-1 Flywheel Demo." }
+          ]
+        }
+      ],
+      "ctaLabel": "Check My Territory & Qualify Now →"
+    },
+    {
+      "id": "practice_area",
+      "type": "choice",
+      "width": "wide",
+      "eyebrow": "QUESTION 1 OF 6 · PRACTICE FOCUS",
+      "headline": "Which primary practice area are you looking to scale in the next 12 weeks?",
+      "subtext": "Select your firm's primary revenue engine (or press keys 1–4).",
+      "options": [
+        {
+          "id": "pi",
+          "label": "Personal Injury Law",
+          "value": "Personal Injury Law",
+          "icon": "⚖️",
+          "subtext": "MVA, Commercial Trucking, Catastrophic Injury, Slip & Fall",
+          "badge": "🔥 Most Popular"
+        },
+        {
+          "id": "family",
+          "label": "Family Law",
+          "value": "Family Law",
+          "icon": "🏛️",
+          "subtext": "High-Asset Divorce, Complex Custody, Marital Estates"
+        },
+        {
+          "id": "both",
+          "label": "Both Personal Injury & Family Law",
+          "value": "Personal Injury & Family Law",
+          "icon": "⚡",
+          "subtext": "Multi-practice growth across one or more metro territories",
+          "badge": "⭐ Highest Volume"
+        },
+        {
+          "id": "other",
+          "label": "Other Practice Area",
+          "value": "Other Practice Area",
+          "icon": "📋",
+          "subtext": "Mass Torts, Workers Comp, Employment, or Civil Litigation"
+        }
+      ]
+    },
+    {
+      "id": "current_volume",
+      "type": "choice",
+      "width": "wide",
+      "eyebrow": "QUESTION 2 OF 6 · CURRENT CASE FLOW",
+      "headline": "How many new retained cases is your firm currently signing per month?",
+      "subtext": "This helps us size your 12-week Growth Flywheel ramp.",
+      "options": [
+        {
+          "id": "under_10",
+          "label": "Under 10 cases / month",
+          "value": "Under 10 cases/mo",
+          "icon": "🌱",
+          "subtext": "Ready to replace inconsistent referrals with a predictable system"
+        },
+        {
+          "id": "10_25",
+          "label": "10 – 25 cases / month",
+          "value": "10–25 cases/mo",
+          "icon": "📈",
+          "subtext": "Looking to add 30+ signed cases/month rapidly"
+        },
+        {
+          "id": "25_50",
+          "label": "25 – 50 cases / month",
+          "value": "25–50 cases/mo",
+          "icon": "🚀",
+          "subtext": "Scaling aggressively & locking out local competitors",
+          "badge": "🔥 Ideal Fit"
+        },
+        {
+          "id": "50_plus",
+          "label": "50+ cases / month",
+          "value": "50+ cases/mo",
+          "icon": "🏆",
+          "subtext": "Dominating regional & statewide market share"
+        }
+      ]
+    },
+    {
+      "id": "avg_case_value",
+      "type": "choice",
+      "width": "wide",
+      "eyebrow": "QUESTION 3 OF 6 · CASE ECONOMICS",
+      "headline": "What is your firm’s approximate average fee / case value?",
+      "subtext": "Our 90-case guarantee is benchmarked to a $7,500+ minimum average case value.",
+      "options": [
+        {
+          "id": "under_5k",
+          "label": "Under $5,000 average case value",
+          "value": "Under $5,000",
+          "icon": "💵"
+        },
+        {
+          "id": "5k_7500",
+          "label": "$5,000 – $7,500 average case value",
+          "value": "$5,000 – $7,500",
+          "icon": "💼"
+        },
+        {
+          "id": "7500_15k",
+          "label": "$7,500 – $15,000 average case value",
+          "value": "$7,500 – $15,000",
+          "icon": "💎",
+          "badge": "⭐ Guarantee Sweet Spot"
+        },
+        {
+          "id": "15k_plus",
+          "label": "$15,000+ (Catastrophic / High-Asset)",
+          "value": "$15,000+",
+          "icon": "👑",
+          "subtext": "High-value injury settlements or complex estates"
+        }
+      ]
+    },
+    {
+      "id": "bottlenecks",
+      "type": "multiselect",
+      "width": "wide",
+      "eyebrow": "QUESTION 4 OF 6 · GROWTH BOTTLENECKS",
+      "headline": "What’s currently holding your firm back from adding 30+ new cases every month?",
+      "subtext": "Select all that apply, then click Continue.",
+      "min": 1,
+      "max": 4,
+      "submitLabel": "Continue →",
+      "options": [
+        {
+          "id": "shared_leads",
+          "label": "Low-intent or shared leads from pay-per-lead vendors",
+          "icon": "📉"
+        },
+        {
+          "id": "slow_intake",
+          "label": "Missed calls, after-hours drop-off, or slow intake follow-up",
+          "icon": "⏱️"
+        },
+        {
+          "id": "agency_burn",
+          "label": "Burned by marketing agencies with retainers & zero accountability",
+          "icon": "🔥"
+        },
+        {
+          "id": "competitors",
+          "label": "Competitors dominating paid ads & search in our metro",
+          "icon": "🎯"
+        }
+      ]
+    },
+    {
+      "id": "intake_capacity",
+      "type": "choice",
+      "width": "wide",
+      "eyebrow": "QUESTION 5 OF 6 · OPERATIONAL READINESS",
+      "headline": "If we deliver 20–30+ pre-qualified consultations per month within 14 days, can your firm handle the volume?",
+      "subtext": "We only guarantee results for firms equipped to sign qualified cases.",
+      "options": [
+        {
+          "id": "ready_now",
+          "label": "Yes — we have intake staff & attorneys ready now",
+          "value": "Ready immediately",
+          "icon": "✅"
+        },
+        {
+          "id": "need_ai_intake",
+          "label": "Yes — especially with your 24/7 AI Intake pre-screening them first",
+          "value": "Ready with AI Speed-to-Lead",
+          "icon": "🤖",
+          "badge": "⚡ Recommended"
+        },
+        {
+          "id": "phased",
+          "label": "We would prefer a phased 12-week ramp-up",
+          "value": "Phased 12-week ramp",
+          "icon": "📊"
+        }
+      ]
+    },
+    {
+      "id": "monthly_budget",
+      "type": "choice",
+      "width": "wide",
+      "eyebrow": "QUESTION 6 OF 6 · DEPLOYMENT CAPACITY",
+      "headline": "What monthly case acquisition budget is your firm prepared to deploy for an exclusive 90-case flywheel?",
+      "subtext": "Includes paid media velocity to lock out your metro territory.",
+      "options": [
+        {
+          "id": "3k_7500",
+          "label": "$3,000 – $7,500 / month",
+          "value": "$3,000 – $7,500/mo",
+          "icon": "💳"
+        },
+        {
+          "id": "7500_15k",
+          "label": "$7,500 – $15,000 / month",
+          "value": "$7,500 – $15,000/mo",
+          "icon": "🚀",
+          "badge": "🔥 Fastest 12-Week ROI"
+        },
+        {
+          "id": "15k_plus",
+          "label": "$15,000+ / month (Full Metro Dominance)",
+          "value": "$15,000+/mo",
+          "icon": "👑"
+        },
+        {
+          "id": "under_3k",
+          "label": "Under $3,000 / month (Exploring Starter Options)",
+          "value": "Under $3,000/mo",
+          "icon": "🔍"
+        }
+      ]
+    },
+    {
+      "id": "analyzing",
+      "type": "loader",
+      "width": "wide",
+      "progress": false,
+      "eyebrow": "CUSTOM FLYWHEEL DIAGNOSTIC",
+      "headline": "Building Your 12-Week Law Firm Growth Projection...",
+      "items": [
+        "Benchmarking {{answers.practice_area}} case demand & CPA economics",
+        "Modeling your 90-case ($675,000+ min. value) 12-week pipeline",
+        "Verifying exclusive metro territory lock eligibility",
+        "Unlocking live demo calendar & 24/7 AI Growth Specialist line"
+      ],
+      "durationMs": 2700
+    },
+    {
+      "id": "contact",
+      "type": "form",
+      "width": "wide",
+      "eyebrow": "PRE-QUALIFIED · EXCLUSIVE TERRITORY CHECK OPEN",
+      "headline": "Your Firm Qualifies For Our 90-Case Guarantee Review",
+      "subtext": "Enter your firm details below to unlock our live Demo Presentation Calendar and direct 24/7 AI Specialist line.",
+      "submitLabel": "Unlock Demo Calendar & Priority Line →",
+      "consent": "100% Confidential · Attorney-Friendly Privacy. By continuing, you agree to receive your custom demo confirmation via email or SMS from LawyerLeadConnect.",
+      "fields": [
+        {
+          "name": "name",
+          "type": "name",
+          "label": "Your Full Name",
+          "placeholder": "e.g. Jonathan Vance, Esq.",
+          "required": true
+        },
+        {
+          "name": "firm",
+          "type": "text",
+          "label": "Law Firm Name",
+          "placeholder": "e.g. Vance & Associates Injury Law",
+          "required": true
+        },
+        {
+          "name": "metro",
+          "type": "text",
+          "label": "Primary City / Metro Territory To Lock",
+          "placeholder": "e.g. Austin, TX / Miami, FL / Atlanta, GA",
+          "required": true
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "label": "Direct Work Email",
+          "placeholder": "jonathan@yourlawfirm.com",
+          "required": true
+        },
+        {
+          "name": "phone",
+          "type": "tel",
+          "label": "Direct Mobile Number (For SMS Confirmation)",
+          "placeholder": "(512) 555-0194",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": "booking",
+      "type": "booking",
+      "width": "wide",
+      "eyebrow": "FINAL STEP · LOCK YOUR DEMO OR CALL LIVE AI NOW",
+      "headline": "Schedule Your 1-on-1 Growth Flywheel Demo, {{name}}",
+      "subtext": "Pick a 30-minute presentation slot below — OR call/text Claire (our live AI Legal Growth Specialist) right now to check {{metro}} territory availability instantly.",
+      "confirmLabel": "Confirm My Demo Presentation Slot →",
+      "aiAgentName": "Claire",
+      "aiPhoneDisplay": "(512) 690-0783",
+      "aiPhoneE164": "+15126900783",
+      "aiHeadline": "Skip The Wait — Call or Text Claire Now",
+      "aiSubtext": "Our 24/7 AI Legal Growth Specialist is standing by on voice & SMS to check {{metro}} exclusivity, answer guarantee questions, or confirm your demo immediately."
+    },
+    {
+      "id": "done",
+      "type": "success",
+      "width": "wide",
+      "progress": false,
+      "eyebrow": "CONFIRMED · TERRITORY CHECK PRIORITY QUEUED",
+      "headline": "You’re Confirmed, {{name}} — {{firm}} Is Locked In",
+      "subtext": "Add your 1-on-1 Growth Flywheel Demo to your calendar below, or call/text our live AI Specialist line anytime.",
+      "aiPhoneDisplay": "(512) 690-0783",
+      "aiPhoneE164": "+15126900783",
+      "hotlineNote": "Want to check territory lock status right now, ask about the 90-case guarantee, or experience our <30-second Legal AI Intake firsthand? Call or text Claire 24/7:"
+    }
+  ]
+}

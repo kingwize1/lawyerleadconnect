@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>LawyerLeadConnect — 90 New Cases In 12 Weeks | Family &amp; Personal Injury Law Firm Growth Flywheel</title>
+    <meta
+      name="description"
+      content="For Family & Personal Injury Law Firms: Guaranteed 90 New Cases at a Minimum $7,500 Average Case Value in the Next 12 Weeks through our Done-For-You Custom Law Firm Growth Flywheel — OR You DON'T Pay."
+    />
+    <meta property="og:title" content="90 New Cases At $7,500+ Avg Case Value In 12 Weeks — Or You Don't Pay" />
+    <meta
+      property="og:description"
+      content="Click through the interactive slides to see how our Done-For-You Law Firm Growth Flywheel works and check territory availability for your Family or Personal Injury firm."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lawyerleadconnect.com/" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231b1b1d'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='34'>⚖️</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./engine/styles.css" />
+    <link rel="stylesheet" href="./slideshow.css" />
+  </head>
+  <body>
+    <main class="of-stage">
+      <div id="app" class="of-root" aria-live="polite"></div>
+    </main>
+
+    <script type="module">
+      import { createFunnel } from "./engine/index.js";
+
+      const app = document.getElementById("app");
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("reset") === "1") {
+        localStorage.removeItem("openfunnel:v1:lawyerleadconnect");
+      }
+
+      async function boot() {
+        const res = await fetch("./funnel.json", { cache: "no-cache" });
+        const funnel = await res.json();
+
+        createFunnel(app, funnel, {
+          hideBranding: true,
+          trackEvents: false,
+          resume: params.get("reset") !== "1",
+          onEvent: (evt) => {
+            if (window.dataLayer) {
+              window.dataLayer.push({ event: `of_${evt.type}`, ...evt });
+            }
+          },
+        });
+      }
+
+      boot().catch((err) => {
+        console.error("Failed to initialize funnel:", err);
+        app.innerHTML =
+          '<div style="padding:48px;text-align:center;color:#fff;font-family:Montserrat,sans-serif;">Unable to load presentation. Please refresh or call <a href="tel:+15126900783" style="color:#34d399;">(512) 690-0783</a>.</div>';
+      });
+    </script>
+  </body>
+</html>
