@@ -1,12 +1,7 @@
 /**
- * @file Lead + event sinks — how captured data leaves the funnel and reaches
- * YOUR backend (CRM + analytics dashboard). Kept separate from analytics.js:
- * that file is for ad-platform pixels, this file is for your own database.
- *
- * Both functions are intentionally tiny, non-blocking, and failure-tolerant: a
- * funnel must NEVER break for a visitor because an analytics call failed. They
- * use `navigator.sendBeacon` when available (survives page unload/redirect) and
- * fall back to `fetch(..., { keepalive: true })`.
+ * @file Lead + event sinks — forwards captured leads & demo bookings to your
+ * email inbox (via FormSubmit AJAX) or custom CRM webhook, with full quiz
+ * answers and UTM attribution. Non-blocking and failure-tolerant.
  */
 
 import { hasPreviewFlag } from "./dom.js";
@@ -38,8 +33,68 @@ function getUtmParams() {
   }
 }
 
+function formatList(val) {
+  if (Array.isArray(val)) return val.join(", ");
+  if (val == null) return "";
+  if (typeof val === "object") return JSON.stringify(val);
+  return String(val);
+}
+
+function buildFormSubmitPayload(lead, answers, ctx, utm) {
+  const isBooked = Boolean(ctx.meta?.booked || lead.bookingMode);
+  const firm = String(lead.firm || lead.name || "New Law Firm");
+  const metro = String(lead.metro || "US Territory");
+  const bookingDisplay = String(lead.bookingDisplay || "Selecting Demo Time Slot");
+
+  const subject = isBooked
+    ? `📅 Demo Booked — ${firm} (${metro}) | LawyerLeadConnect`
+    : `🔥 New Qualified Lead — ${firm} (${metro}) | LawyerLeadConnect`;
+
+  const utmSummary = Object.keys(utm).length
+    ? Object.entries(utm)
+        .map(([k, v]) => `${k}=${v}`)
+        .join(" | ")
+    : "Direct / Organic";
+
+  /** @type {Record<string, string>} */
+  const payload = {
+    _subject: subject,
+    _template: "table",
+    _captcha: "false",
+    Stage: isBooked
+      ? lead.bookingMode === "direct_ai_call"
+        ? "Direct AI Specialist Call/SMS Selected"
+        : "Demo Presentation Slot Confirmed"
+      : "Quiz Completed — Application Submitted",
+    "Full Name": String(lead.name || ""),
+    "Law Firm": String(lead.firm || ""),
+    "Exclusive Metro Territory": String(lead.metro || ""),
+    "Work Email": String(lead.email || ""),
+    "Mobile Phone": String(lead.phone || ""),
+    "Demo Slot": isBooked ? bookingDisplay : "Pending slot selection (Slide 12)",
+    "Practice Area": formatList(answers.practice_area),
+    "Current Monthly Cases": formatList(answers.current_volume),
+    "Average Case Value": formatList(answers.avg_case_value),
+    "Growth Bottlenecks": formatList(answers.bottlenecks),
+    "Intake Capacity": formatList(answers.intake_capacity),
+    "Monthly Ad Budget": formatList(answers.monthly_budget),
+    "AI Hotline": String(lead.aiPhoneDisplay || "(512) 690-0783"),
+    "UTM Attribution": utmSummary,
+    "Funnel URL": typeof location !== "undefined" ? location.href : "https://lawyerleadconnect.com/",
+    "Submitted At": new Date().toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+  };
+
+  if (lead.email) {
+    payload._replyto = String(lead.email);
+  }
+  return payload;
+}
+
 /**
- * POST a captured lead to your endpoint (Supabase edge function by default).
+ * POST a captured lead to FormSubmit AJAX email forwarding or a custom webhook.
  *
  * @param {Record<string, unknown>} lead      Form field values.
  * @param {Record<string, unknown>} answers   Quiz answers keyed by step id.
@@ -50,31 +105,39 @@ export async function submitLead(lead, answers, ctx = {}) {
   const isPreview = Boolean(
     ctx.meta?.preview ||
     ctx.meta?.isPreview ||
-    (typeof window !== "undefined" && (
-      hasPreviewFlag(window.location.search)
-    ))
+    (typeof window !== "undefined" && hasPreviewFlag(window.location.search))
   );
-  const endpoint = ctx.endpoint || "/api/lead"; // TODO: point at your deployment
-  const body = {
-    funnelId: ctx.funnelId,
-    sessionId: ctx.sessionId,
-    lead,
-    answers,
-    preview: isPreview,
-    meta: {
-      url: typeof location !== "undefined" ? location.href : undefined,
-      referrer: typeof document !== "undefined" ? document.referrer : undefined,
-      utm: getUtmParams(),
-      preview: isPreview,
-      ...ctx.meta,
-    },
-    ts: Date.now(),
-  };
+  const endpoint = ctx.endpoint || "";
+  if (!endpoint) return false;
+
+  const utm = getUtmParams();
+  const isFormSubmit = /formsubmit\.co\/ajax\//i.test(endpoint);
+
+  const body = isFormSubmit
+    ? buildFormSubmitPayload(lead, answers, ctx, utm)
+    : {
+        funnelId: ctx.funnelId,
+        sessionId: ctx.sessionId,
+        lead,
+        answers,
+        preview: isPreview,
+        meta: {
+          url: typeof location !== "undefined" ? location.href : undefined,
+          referrer: typeof document !== "undefined" ? document.referrer : undefined,
+          utm,
+          preview: isPreview,
+          ...ctx.meta,
+        },
+        ts: Date.now(),
+      };
 
   try {
     const res = await fetch(endpoint, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify(body),
       keepalive: true,
     });
@@ -92,7 +155,8 @@ export async function submitLead(lead, answers, ctx = {}) {
  * @param {{ endpoint?: string }} [ctx]
  */
 export function trackEvent(event, ctx = {}) {
-  const endpoint = ctx.endpoint || "/api/events";
+  const endpoint = ctx.endpoint || "";
+  if (!endpoint) return;
   const payload = JSON.stringify(event);
   try {
     if (typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") {

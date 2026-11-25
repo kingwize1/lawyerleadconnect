@@ -27,7 +27,8 @@
     "transition": "slide"
   },
   "integrations": {
-    "leadEndpoint": ""
+    "leadEndpoint": "https://formsubmit.co/ajax/kingwizemusic@gmail.com",
+    "notifyEmail": "kingwizemusic@gmail.com"
   },
   "steps": [
     {
